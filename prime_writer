@@ -1,0 +1,14 @@
+# This is the Prime Writer, by atopheim
+# Just type in the upper limit of the requested interval and the computer will write out all primes
+# Interval checked is [0-input]
+
+import math
+upper_lim = int(input("Type the range: "))
+for i in range(upper_lim+1):
+    if_prime=True
+    for j in range(2,i):
+        if i%j==0:
+            if_prime=False
+            break
+    if if_prime:
+        print(i)
