@@ -1,0 +1,26 @@
+def fib():
+    #Fibonacci sequencer, by atopheim
+    #- any number is the sum of the two previous numbers.
+
+    #If no changes to the program are made, then the program will print out the standard fibonacci sequence.
+    #If one would like to start at different initial values, then just use the commented code for fib1 and fib2
+
+    fib1 = 0 #fib1 = input("Write the first reference in the Fibonacci sequence")
+    fib2 = 1 #fib2 = input("Write the second reference in the Fibonacci sequence")
+
+    fibnext=fib1+fib2
+
+    k = int(input("Type in the number of iterations, k="))
+    print(fib1)
+    print(fib2)
+    for i in range(3,k+1):
+        
+        fibnext = fib1 + fib2
+        fib1 = fib2
+        fib2 = fibnext
+
+        print(fibnext)
+
+#Calling function
+fib()
+
