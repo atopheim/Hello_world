@@ -1,0 +1,125 @@
+#Survey by atopheim
+#code is written in norwenglish ^^
+
+def skriv_statistikk(kvinner,menn,fag,ITGK,timer,n):
+    print("")
+    print("Stats:")
+    print("Women",kvinner)
+    print("Men",menn)
+    print("People taking courses",fag)
+    print("People taking ITGK",ITGK)
+    print("Hours average",timer/n)
+
+def les_tall(spm): #Brukeren setter inn integer-gjør om til int. Eller bye/hade programmet skal bryte og skrive statistikk.
+    for i in spm:
+        if ord(i)>=ord("0") and ord(i)<=ord("9"):
+            spm=int(spm)
+        elif spm[0].lower()==("b" or "h"): #bye/hade
+            spm="b"
+
+    return spm
+
+def les_svar(spm): #Brukeren setter inn string som er yes eller no, hvis han skriver hade så skal programmet bryte og skrive statistikk.
+    if spm[0].lower()=="y":
+        v=True
+    elif spm[0].lower() == ("h" or "b"):
+        v="b"
+    else:
+        v=False
+    return v
+
+def les_kjonn(spm):
+    if spm[0].lower() == "b":
+        v="b"
+    elif spm.lower() == "f":
+        v=False
+    elif spm.lower() == "m":
+        v=True
+    else:
+        print("?")
+    return v
+
+def survey_motor():
+    #Globale tellevariabler
+    kvinner = 0
+    menn = 0
+    fag = 0
+    ITGK = 0
+    timer = 0
+    ans = "yeah"
+    n=0
+
+    while ans != "bye":
+        print("")
+        print("Welcome to the GREAT QUESTIONNAIRE!")
+        print("")
+        #FØRSTE SPØRSMÅL
+        age = input("What's your age?")
+        les_tall(age)
+        age = les_tall(age)#henter ut spm hvis brukeren er i målgruppen
+        if age == "b":
+            break
+        elif age > 16 and age < 25:  # målgruppen
+            pass
+        else:
+            print("Du er ikke i målgruppen")
+            restart = input("press enter to restart the questionnaire")
+            survey_motor()
+        n += 1 #teller antall kjørte undersøkelser
+        #ANDRE SPØRSMÅL
+        kjonn = input("Male or Female (m/f)")
+        les_kjonn(kjonn)
+        v = les_kjonn(kjonn)
+        #Legger på de globale variablene
+        if v == True:
+            menn += 1
+        elif v == False:
+            kvinner += 1
+        elif v == "b":
+            break
+        #TREDJE SPØRSMÅL
+        course = input("Do you take a course at NTNU? (yes/no)")
+        les_svar(course)
+        v = les_svar(course)
+        if v == True:
+            fag += 1
+        elif v == False:
+            pass
+        elif v=="b":
+            break
+            survey_motor()
+        #FJERDE SPØSMÅL
+        if v == True and age < 22:
+            variable_ITGK = input("Do you take ITGK?")
+            les_svar(variable_ITGK)
+            if v==True:
+                ITGK+=1
+            else:
+                pass
+        elif v == True and age >= 22:
+            variable_ITGK = input("Do you REALLY take  ITGK?")
+            if v==True:
+                ITGK += 1
+            else:
+                pass
+        elif v=="b":
+            break
+        #Femte Spørsmål
+        hours_homework = input("How many hours do you use on homework per day? /average")
+        les_tall(hours_homework)
+        timer_return = les_tall(hours_homework)
+        timer += timer_return
+
+
+    #User wrote bye and the loop ends, therefor writing out statistics
+    skriv_statistikk(kvinner, menn, fag, ITGK, timer, n)
+
+
+#Code
+
+
+def main():
+    survey_motor()
+
+if __name__ == '__main__':
+    main()
