@@ -1,0 +1,62 @@
+#Tegne med Python
+
+
+from turtle import *
+# importerer funksjoner fra turtle
+print("This is the triangle drawer")
+
+valg1=input("Do you wish for a up- or downwards facing triangle?")
+x=valg1[0]
+x=str.lower(x)
+if x=='u':
+    pensize(7)          # sett pennen 7 piksler tykk
+    pencolor("#5cbec9")    # sett pennefargen til rosa
+    bgcolor("#00509e")     # sett bakgrunnsfargen grå
+    fillcolor("#f58025")    #sett fyllfargen lilla
+    # Tegner en fylt trekant
+    begin_fill()
+    forward(200)        # gå 100 piksler framover
+    left(120)           # drei 120 grader venstre
+    forward(200)  
+    left(120) 
+    forward(200)
+    end_fill()
+else:
+    pensize(7)          # sett pennen 7 piksler tykk
+    pencolor("#ccbd8f")    # sett pennefargen til rosa
+    bgcolor("#dde7ee")     # sett bakgrunnsfargen grå
+    fillcolor("#f58025") # sett fyllfargen lilla
+    # Tegner en fylt trekant
+    begin_fill()
+    forward(200)        # gå 100 piksler framover
+    right(120)           # drei 120 grader høyre
+    forward(200)  
+    right(120) 
+    forward(200)
+    end_fill()
+
+print("Twinkle Twinkle little... :)")
+
+pencolor("white")
+bgcolor("white")
+
+right(120)
+right(180)
+forward(50)
+
+pensize(5)
+pencolor("blue")
+fillcolor("red")
+
+begin_fill()
+forward(400)
+right(144)
+forward(400)
+right(144)
+forward(400)
+right(144)
+forward(400)
+right(144)
+forward(400)
+right(144)
+end_fill()
