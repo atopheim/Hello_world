@@ -1,0 +1,36 @@
+# proof of work
+
+import sys
+import time
+import hashlib
+from struct import unpack, pack
+
+##
+
+timestamp = str(time.time())
+message = "this is a random message"
+payload = timestamp + message
+
+
+nonce = 0 #number only used once, goes from zero to n "encryption standard"
+guess = 99999999999
+throttle = 1000000 #how difficult
+target = 2**64 / throttle #max number / difficulty
+
+##
+#hashing the payload - take and digest payload
+payloadHash = hashlib.sha512(payload).digest()
+
+start = time.time()
+
+#algorithm
+
+while guess > target:
+    nonce += 1 #nonce +1?
+    #computer guess
+    guess, =unpack(">Q", hashlib.sha512(hashlib.sha512(pack(">Q", nonce)+
+                                                       payloadHash).digest()).digest())[0:8]
+
+end = time.time()
+
+print(timestamp, message, nonce, guess, payloadHash, start,end)
