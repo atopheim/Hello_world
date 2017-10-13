@@ -1,0 +1,38 @@
+# The Ticket Prize calculator, by atopheim
+
+babyprice   =0
+childprice  =20
+youthprice  =40
+adultprice  =80
+oldprice    =10
+numTickets  =int(input("How many tickets do you intent to buy?"))
+totalPrice  =0
+
+def initialprice():
+    age = int(input("What is your age?"))
+    if age < 5:
+        price = babyprice
+    elif age >= 5 and age < 16:  # BABY PRICES
+        price = childprice
+    elif age >=16 and age < 26: #Youths
+        price = youthprice
+    elif age >=26 and age < 60: #Adult
+        price = adultprice
+    else:
+        price = oldprice
+
+    bike = str(input("Do you have a bicycle with you?(y/n)")).lower()
+    if bike[0] == "y":
+        price+= 50
+    else:
+        pass
+    print("The price will be" ,price)
+    return price
+
+for i in range(numTickets):
+    price=initialprice()
+    totalPrice=totalPrice+price
+print("Checkout is at:",totalPrice)
+
+
+
