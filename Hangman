@@ -1,11 +1,17 @@
-/ A Hangman game by atopheim
-/ Written in python 3.6 - 25.09.2017
+# A Hangman game by atopheim
+# Written in python 3.6 - 25.09.2017
+
+import os
+
+clearConsole = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
 print("Welcome a hangman type game by atopheim")
 print("")
 
 correctText = input("Secret word: ")
 tries = int(input("Number of tries: "))
+clearConsole()
+
 currentText = "*" * len(correctText)
 print(currentText)
 def test(x):
@@ -39,4 +45,4 @@ for i in range(x):
             print("you lose")
             break
             
-/ A Hangman game by atopheim
+# A Hangman game by atopheim
